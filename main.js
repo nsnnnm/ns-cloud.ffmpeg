@@ -1,22 +1,18 @@
-import { FFmpeg } from "https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/esm/index.js";
-import { fetchFile } from "https://unpkg.com/@ffmpeg/util@0.12.1/dist/esm/index.js";
-
-const loadBtn = document.getElementById("load");
-const bar = document.getElementById("bar");
+import { FFmpeg } from "@ffmpeg/ffmpeg";
 
 const ffmpeg = new FFmpeg();
 
+const loadBtn = document.getElementById("loadBtn");
+const status = document.getElementById("status");
+
 loadBtn.onclick = async () => {
-  loadBtn.disabled = true;
+  status.textContent = "初期化中…";
 
   await ffmpeg.load({
-    coreURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js",
-    wasmURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    coreURL: "/ffmpeg/ffmpeg-core.js",
+    wasmURL: "/ffmpeg/ffmpeg-core.wasm",
+    workerURL: "/ffmpeg/worker.js",
   });
 
-  ffmpeg.on("progress", ({ progress }) => {
-    bar.style.width = Math.round(progress * 100) + "%";
-  });
-
-  console.log("FFmpeg loaded");
+  status.textContent = "読み込み完了！";
 };
