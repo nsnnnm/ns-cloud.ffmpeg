@@ -1,4 +1,4 @@
-import { FFmpeg } from "@ffmpeg/ffmpeg";
+const { FFmpeg } = FFmpegWASM;
 
 const ffmpeg = new FFmpeg();
 

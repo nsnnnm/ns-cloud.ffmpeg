@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>ns cloud ffmpeg</title>
 </head>
 <body>
-  <button id="load">FFmpeg Load</button>
+  <button id="loadBtn">FFmpeg読み込み</button>
+  <p id="status">未初期化</p>
 
-  <div style="width:300px;border:1px solid #ccc;">
-    <div id="bar" style="height:20px;width:0%;background:#4caf50;"></div>
-  </div>
-
-  <script type="module" src="./main.js"></script>
+  <!-- ★ module にしない -->
+  <script src="/ffmpeg/ffmpeg.min.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>
